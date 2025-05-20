@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Тест по уроку {{ lesson_id + 1 }}</title>
+</head>
+<body>
+    <h1>Тест по уроку {{ lesson_id + 1 }}</h1>
+    <form method="post">
+        {% for question in test %}
+            <p>{{ question.question }}</p>
+            {% for option in question.options %}
+                <label>
+                    <input type="radio" name="{{ question.id }}" value="{{ option }}">
+                    {{ option }}
+                </label><br>
+            {% endfor %}
+        {% endfor %}
+        <button type="submit">Проверить</button>
+    </form>
+</body>
+</html>
