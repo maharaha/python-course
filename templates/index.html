@@ -6,13 +6,10 @@
 </head>
 <body>
     <h1>Добро пожаловать на курс по Python!</h1>
-
-    {% for lesson in lessons %}
-        <div>
-            <p>{{ lesson }}</p>
-        </div>
-    {% endfor %}
-
-    <p><a href="/quiz/0">Пример викторины</a></p>
+    <ul>
+        {% for lesson in lessons %}
+        <li><a href="{{ url_for('lesson', lesson_id=loop.index0) }}">{{ lesson.title }}</a></li>
+        {% endfor %}
+    </ul>
 </body>
 </html>
