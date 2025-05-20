@@ -2,12 +2,14 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Курсы</title>
+    <title>Курсы - Программирование в среде Python</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-    <h1>Курсы</h1>
-    <h2>Учебный курс</h2>
-    <h3>Программирование в среде Python</h3>
-    <p><a href="/structure">Перейти к структуре курса</a></p>
+    <div class="header">Курсы</div>
+    <div class="subheader">Учебный курс</div>
+    <div class="page-title">Программирование в среде Python</div>
+
+    <a href="{{ url_for('structure') }}">Перейти к структуре курса</a>
 </body>
 </html>
