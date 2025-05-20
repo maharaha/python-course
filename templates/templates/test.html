@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head><title>Тест по уроку {{ lesson_id }}</title></head>
+<body>
+    <h1>Тест по уроку {{ lesson_id }}</h1>
+    <form method="post">
+        {% for q in test %}
+            <p><strong>{{ q.question }}</strong></p>
+            {% for option in q.options %}
+                <label><input type="radio" name="{{ q.id }}" value="{{ option }}"> {{ option }}</label><br>
+            {% endfor %}
+        {% endfor %}
+        <button type="submit">Отправить</button>
+    </form>
+</body>
+</html>
