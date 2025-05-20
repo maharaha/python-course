@@ -2,14 +2,12 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Курс по Python</title>
+    <title>Курсы</title>
 </head>
 <body>
-    <h1>Добро пожаловать на курс по Python!</h1>
-    <ul>
-        {% for lesson in lessons %}
-        <li><a href="{{ url_for('lesson', lesson_id=loop.index0) }}">{{ lesson.title }}</a></li>
-        {% endfor %}
-    </ul>
+    <h1>Курсы</h1>
+    <h2>Учебный курс</h2>
+    <h3>Программирование в среде Python</h3>
+    <p><a href="/structure">Перейти к структуре курса</a></p>
 </body>
 </html>
