@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Викторина</title>
+</head>
+<body>
+    <h1>Викторина</h1>
+    <ul>
+        {% for q in quiz %}
+            <li>{{ q }}</li>
+        {% endfor %}
+    </ul>
+    <p><a href="/">На главную</a></p>
+</body>
+</html>
