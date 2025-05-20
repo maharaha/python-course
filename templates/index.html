@@ -1,15 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Python Lessons</title>
+    <title>Курс по Python</title>
 </head>
 <body>
-    <h1>Welcome to the Python Course!</h1>
-    <ul>
-        {% for lesson in lessons %}
-        <li>{{ lesson.title }}</li>
-        {% endfor %}
-    </ul>
+    <h1>Добро пожаловать на курс по Python!</h1>
+
+    {% for lesson in lessons %}
+        <div>
+            <h2>{{ lesson.title }}</h2>
+            <p>{{ lesson.content }}</p>
+        </div>
+    {% endfor %}
+
+    <p><a href="/quizzes">Перейти к тестам</a></p>
 </body>
 </html>
