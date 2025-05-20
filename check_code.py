@@ -1,10 +1,7 @@
-
-def check_user_code(user_code, lesson_id):
+def check_user_code(code):
     try:
-        # Ограниченная среда выполнения (эмуляция)
-        allowed_builtins = {'print': print}
         local_vars = {}
-        exec(user_code, {'__builtins__': allowed_builtins}, local_vars)
-        return "✅ Код выполнен без ошибок!"
+        exec(code, {}, local_vars)
+        return "Код выполнен успешно."
     except Exception as e:
-        return f"❌ Ошибка: {e}"
+        return f"Ошибка: {str(e)}"
