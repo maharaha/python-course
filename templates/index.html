@@ -7,13 +7,14 @@
 <body>
     <h1>Добро пожаловать на курс по Python!</h1>
 
-    {% for lesson in lessons %}
-        <div>
-            <h2>{{ lesson.title }}</h2>
-            <p>{{ lesson.content }}</p>
-        </div>
-    {% endfor %}
+    <ul>
+        {% for i in range(lessons|length) %}
+            <li>
+                <a href="/lesson/{{ i }}">{{ lessons[i] }}</a>
+            </li>
+        {% endfor %}
+    </ul>
 
-    <p><a href="/quizzes">Перейти к тестам</a></p>
+    <p><a href="/quiz/0">Перейти к викторине</a></p>
 </body>
 </html>
