@@ -3,13 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Структура курса</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-    <h1>Структура курса</h1>
-    <ul>
+    <div class="header">Курсы</div>
+    <div class="subheader">Структура курса</div>
+    <div class="lesson-list">
         {% for lesson in lessons %}
-            <li><a href="/lesson/{{ loop.index0 }}">{{ lesson.title }}</a></li>
+            <div class="lesson-item">
+                <h3>Урок {{ loop.index }}: {{ lesson.title }}</h3>
+                <p>{{ lesson.content }}</p>
+                <a href="{{ url_for('lesson', lesson_id=loop.index0) }}">Перейти к уроку</a>
+            </div>
         {% endfor %}
-    </ul>
+    </div>
 </body>
 </html>
