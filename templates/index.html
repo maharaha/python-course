@@ -2,25 +2,15 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Курсы Python</title>
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <title>Курсы - Программирование в среде Python</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
+    <div class="header">Курсы</div>
+    <div class="subheader">Учебный курс</div>
+    <div class="page-title">Программирование в среде Python</div>
 
-    <!-- Верхняя панель с логотипом и надписью -->
-    <div class="logo-header">
-        <img src="{{ url_for('static', filename='img/python-logo.png') }}" alt="Python Logo" class="logo-img">
-        <h1 class="logo-title">Курсы</h1>
-    </div>
-
-    <!-- Основной контент -->
-    <div class="content">
-        <h2 class="course-subtitle">Учебный курс</h2>
-        <h3 class="course-title">Программирование в среде Python</h3>
-
-        <p><a href="{{ url_for('structure') }}" class="structure-link">Перейти к структуре курса</a></p>
-    </div>
-
+    <a href="{{ url_for('structure') }}">Перейти к структуре курса</a>
 </body>
 </html>
+
