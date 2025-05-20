@@ -1,0 +1,16 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Python Lessons</title>
+    <meta charset="utf-8">
+</head>
+<body>
+    <h1>Список уроков</h1>
+    <ul>
+        {% for id, lesson in enumerate(lessons) %}
+            <li><a href="/lesson/{{ id }}">{{ lesson.split(":")[0] }}</a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
