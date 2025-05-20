@@ -1,15 +1,14 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Python Course</title>
+    <title>Python Lessons</title>
 </head>
 <body>
-    <h1>Уроки по Python</h1>
+    <h1>Welcome to the Python Course!</h1>
     <ul>
-        {% for id, lesson in lessons.items() %}
-            <li><a href="/lesson/{{ id }}">{{ lesson.title }}</a></li>
+        {% for lesson in lessons %}
+        <li>{{ lesson.title }}</li>
         {% endfor %}
     </ul>
 </body>
