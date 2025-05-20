@@ -1,4 +1,3 @@
-
 from flask import Flask, render_template, request
 from lessons import lessons
 from tests import tests
@@ -13,8 +12,11 @@ def index():
 
 @app.route("/lesson/<int:lesson_id>")
 def lesson(lesson_id):
-    lesson = lessons.get(lesson_id)
-    return render_template("lesson.html", lesson=lesson, lesson_id=lesson_id)
+    if 0 <= lesson_id < len(lessons):
+        lesson = lessons[lesson_id]
+        return render_template("lesson.html", lesson=lesson, lesson_id=lesson_id)
+    else:
+        return "Урок не найден", 404
 
 @app.route("/test/<int:lesson_id>", methods=["GET", "POST"])
 def test(lesson_id):
@@ -28,7 +30,7 @@ def test(lesson_id):
 @app.route("/quiz/<int:lesson_id>")
 def quiz(lesson_id):
     quiz_data = quizzes.get(lesson_id, [])
-    return render_template("quiz.html", quiz=quiz_data)
+    return render_template("quiz.html", quiz=quiz_data, lesson_id=lesson_id)
 
 @app.route("/check", methods=["POST"])
 def check():
