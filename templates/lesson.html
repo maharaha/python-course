@@ -2,14 +2,24 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Урок {{ lesson_id + 1 }}</title>
+    <title>{{ lesson.title }}</title>
 </head>
 <body>
-    <h1>Урок {{ lesson_id + 1 }}</h1>
-    <p>{{ lesson }}</p>
+    <h1>{{ lesson.title }}</h1>
+    <p>{{ lesson.content }}</p>
+    <h3>Задание:</h3>
+    <p>{{ lesson.task }}</p>
 
-    <p><a href="/test/{{ lesson_id }}">Пройти тест</a></p>
-    <p><a href="/quiz/{{ lesson_id }}">Пройти викторину</a></p>
-    <p><a href="/">Назад к списку уроков</a></p>
+    <form method="POST">
+        <textarea name="code" rows="8" cols="60" placeholder="Введите код здесь..."></textarea><br>
+        <button type="submit">Выполнить</button>
+    </form>
+
+    {% if result %}
+        <h3>Результат:</h3>
+        <pre>{{ result }}</pre>
+    {% endif %}
+
+    <p><a href="{{ url_for('index') }}">Назад к списку уроков</a></p>
 </body>
 </html>
