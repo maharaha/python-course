@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Курсы по Python</title>
-    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
     <header>
         <div class="logo-title">
-            <img src="/static/python-logo.png" alt="Python Logo" class="logo">
+            <img src="{{ url_for('static', filename='img/python-logo.png') }}" alt="Python Logo" class="logo">
             <h1>Курсы</h1>
         </div>
         <h2>Учебный курс</h2>
