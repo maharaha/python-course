@@ -31,12 +31,26 @@ def practice():
             output = f"❌ Ошибка: {e}"
     return render_template("practice.html", output=output, code=code)
 
-# ✅ ДОБАВЛЯЕМ этот маршрут
 @app.route("/project", methods=["GET", "POST"])
 def project():
     code = ""
     output = ""
-    if request.method == "POST":
+
+    # Три проекта на выбор
+    project_titles = {
+        "1": "🔢 Калькулятор",
+        "2": "🎲 Генератор паролей",
+        "3": "🐢 Рисунок с turtle"
+    }
+    project_descriptions = {
+        "1": "Создайте калькулятор, который выполняет операции: +, -, *, /.",
+        "2": "Сделайте генератор, который создает случайные пароли из букв и цифр.",
+        "3": "С помощью turtle нарисуйте звезду, цветок или домик."
+    }
+
+    selected = request.form.get("project")  # выбор проекта
+
+    if selected and "code" in request.form:
         code = request.form.get("code", "")
         try:
             exec_globals = {"__builtins__": {}}
@@ -45,7 +59,15 @@ def project():
             output = exec_locals.get("output", "✅ Код выполнен успешно.")
         except Exception as e:
             output = f"❌ Ошибка: {e}"
-    return render_template("project.html", code=code, output=output)
+
+    return render_template(
+        "project.html",
+        selected=selected,
+        code=code,
+        output=output,
+        project_title=project_titles.get(selected),
+        project_description=project_descriptions.get(selected)
+    )
 
 if __name__ == "__main__":
     app.run(debug=True)
