@@ -6,16 +6,49 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-    <div class="header">Курсы</div>
-    <div class="subheader">Структура курса</div>
-    <div class="lesson-list">
-        {% for lesson in lessons %}
-            <div class="lesson-item">
-                <h3>Урок {{ loop.index }}: {{ lesson.title }}</h3>
-                <p>{{ lesson.content }}</p>
-                <a href="{{ url_for('lesson', lesson_id=loop.index0) }}">Перейти к уроку</a>
-            </div>
+    <header>
+        <div class="logo-title">
+            <img src="{{ url_for('static', filename='images/python-logo.png') }}" alt="Python Logo" class="logo">
+            <h1>Курсы</h1>
+        </div>
+        <h2>Структура курса</h2>
+    </header>
+
+    <section class="intro">
+        <p>Ниже представлены все 17 уроков. Выберите тему, чтобы начать обучение.</p>
+    </section>
+
+    <section class="lesson-grid">
+        {% for lesson_id, lesson in lessons.items() %}
+            <a href="/lesson/{{ lesson_id }}" class="lesson-tile">
+                {% if lesson_id == 0 %} 🐍
+                {% elif lesson_id == 1 %} 🖥
+                {% elif lesson_id == 2 %} 📤
+                {% elif lesson_id == 3 %} 📥
+                {% elif lesson_id == 4 %} 🧮
+                {% elif lesson_id == 5 %} ➕
+                {% elif lesson_id == 6 %} 🔀
+                {% elif lesson_id == 7 %} 🔁
+                {% elif lesson_id == 8 %} 📋
+                {% elif lesson_id == 9 %} 🧩
+                {% elif lesson_id == 10 %} ⚙️
+                {% elif lesson_id == 11 %} ✂️
+                {% elif lesson_id == 12 %} 📂
+                {% elif lesson_id == 13 %} 🐢
+                {% elif lesson_id == 14 %} 🛠
+                {% elif lesson_id == 15 %} 💼
+                {% elif lesson_id == 16 %} 🚀
+                {% else %} 📘
+                {% endif %}
+                <br>{{ lesson.split(':')[0] }}
+            </a>
         {% endfor %}
-    </div>
+    </section>
+
+    <footer>
+        <div class="social">
+            <a href="/">← Вернуться на главную</a>
+        </div>
+    </footer>
 </body>
 </html>
