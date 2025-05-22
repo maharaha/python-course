@@ -14,20 +14,20 @@
         <h2>Среда выполнения</h2>
     </header>
 
-    <section class="editor-container">
-        <form action="/check" method="POST">
-            <label for="code">Введите ваш код на Python:</label><br>
-            <textarea name="code" id="code" rows="10" cols="60" placeholder="print('Привет, мир!')"></textarea><br>
-            <button type="submit">Выполнить</button>
+    <div class="practice-container">
+        <h2>Введите ваш код на Python:</h2>
+        <form method="post">
+            <textarea name="code" class="code-input" placeholder="Например: print('Привет, мир!')">{{ code|default('') }}</textarea><br>
+            <button type="submit" class="run-button">Выполнить</button>
         </form>
 
         {% if output %}
-        <section class="output">
-            <h3>Результат:</h3>
+        <div class="output-box">
+            <strong>Результат:</strong>
             <pre>{{ output }}</pre>
-        </section>
+        </div>
         {% endif %}
-    </section>
+    </div>
 
     <footer>
         <div class="social">
