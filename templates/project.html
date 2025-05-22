@@ -16,7 +16,7 @@
 
     {% if not selected %}
     <section class="intro">
-        <p>Выберите одно из следующих заданий:</p>
+        <p>🎯 Выберите одно из следующих заданий:</p>
         <div class="project-choice">
             <form method="post">
                 <button name="project" value="1" class="course-button">🔢 Калькулятор</button>
@@ -35,7 +35,7 @@
         <form method="post">
             <textarea name="code" class="code-input" placeholder="Введите ваш код здесь...">{{ code|default('') }}</textarea><br>
             <input type="hidden" name="project" value="{{ selected }}">
-            <button type="submit" class="run-button">Запустить</button>
+            <button type="submit" class="run-button">▶ Запустить</button>
         </form>
 
         {% if output %}
