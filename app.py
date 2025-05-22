@@ -18,16 +18,19 @@ def lesson(lesson_id):
 
 @app.route("/practice", methods=["GET", "POST"])
 def practice():
+    code = ""
     output = ""
     if request.method == "POST":
         code = request.form.get("code", "")
         try:
-            exec_globals = {}
-            exec(code, exec_globals)
-            output = exec_globals.get("output", "✅ Код выполнен успешно.")
+            # Безопасное окружение без встроенных функций
+            exec_globals = {"__builtins__": {}}
+            exec_locals = {}
+            exec(code, exec_globals, exec_locals)
+            output = exec_locals.get("output", "✅ Код выполнен успешно.")
         except Exception as e:
             output = f"❌ Ошибка: {e}"
-    return render_template("practice.html", output=output)
+    return render_template("practice.html", output=output, code=code)
 
 if __name__ == "__main__":
     app.run()
