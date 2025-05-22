@@ -11,33 +11,41 @@
             <img src="{{ url_for('static', filename='images/python-logo.png') }}" alt="Python Logo" class="logo">
             <h1>Курсы</h1>
         </div>
-        <h2>Учебный курс</h2>
-        <h3>🎯 Итоговый проект</h3>
+        <h2>Итоговый проект</h2>
     </header>
 
+    {% if not selected %}
     <section class="intro">
-        <p>На этом этапе вы создаёте свою программу на Python. Выберите одну из трёх тем проекта или придумайте свою идею.</p>
-        <ul>
-            <li>📌 <strong>Проект 1:</strong> Калькулятор с выбором операций</li>
-            <li>📌 <strong>Проект 2:</strong> Генератор паролей с настройками</li>
-            <li>📌 <strong>Проект 3:</strong> Мини-игра "Угадай число"</li>
-        </ul>
+        <p>Выберите одно из следующих заданий:</p>
+        <div class="project-choice">
+            <form method="post">
+                <button name="project" value="1" class="course-button">🔢 Калькулятор</button>
+                <button name="project" value="2" class="course-button">🎲 Генератор паролей</button>
+                <button name="project" value="3" class="course-button">🐢 Рисунок с turtle</button>
+            </form>
+        </div>
+    </section>
+    {% else %}
+    <section class="intro">
+        <h3>{{ project_title }}</h3>
+        <p>{{ project_description }}</p>
     </section>
 
     <section class="practice-container">
-        <h2>✏️ Введите код вашего проекта:</h2>
-        <form action="/project" method="POST">
-            <textarea name="code" id="code" class="code-input" placeholder="Напишите свой проект здесь...">{{ code|default('') }}</textarea><br>
-            <button class="run-button" type="submit">▶ Запустить</button>
+        <form method="post">
+            <textarea name="code" class="code-input" placeholder="Введите ваш код здесь...">{{ code|default('') }}</textarea><br>
+            <input type="hidden" name="project" value="{{ selected }}">
+            <button type="submit" class="run-button">Запустить</button>
         </form>
 
         {% if output %}
         <div class="output-box">
-            <h3>📤 Результат:</h3>
+            <strong>Результат:</strong>
             <pre>{{ output }}</pre>
         </div>
         {% endif %}
     </section>
+    {% endif %}
 
     <footer>
         <div class="social">
