@@ -19,7 +19,8 @@
     </section>
 
     <section class="lesson-grid">
-        {% for lesson_id, lesson in lessons.items() %}
+        {% for lesson_id in range(lessons|length) %}
+            {% set lesson = lessons[lesson_id] %}
             <a href="/lesson/{{ lesson_id }}" class="lesson-tile">
                 {% if lesson_id == 0 %} 🐍
                 {% elif lesson_id == 1 %} 🖥
@@ -40,7 +41,7 @@
                 {% elif lesson_id == 16 %} 🚀
                 {% else %} 📘
                 {% endif %}
-                <br>{{ lesson.split(':')[0] }}
+                <br>{{ lesson.title }}
             </a>
         {% endfor %}
     </section>
