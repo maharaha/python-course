@@ -23,7 +23,6 @@ def practice():
     if request.method == "POST":
         code = request.form.get("code", "")
         try:
-            # Безопасное окружение без встроенных функций
             exec_globals = {"__builtins__": {}}
             exec_locals = {}
             exec(code, exec_globals, exec_locals)
@@ -32,5 +31,22 @@ def practice():
             output = f"❌ Ошибка: {e}"
     return render_template("practice.html", output=output, code=code)
 
+# ✅ ДОБАВЛЯЕМ этот маршрут
+@app.route("/project", methods=["GET", "POST"])
+def project():
+    code = ""
+    output = ""
+    if request.method == "POST":
+        code = request.form.get("code", "")
+        try:
+            exec_globals = {"__builtins__": {}}
+            exec_locals = {}
+            exec(code, exec_globals, exec_locals)
+            output = exec_locals.get("output", "✅ Код выполнен успешно.")
+        except Exception as e:
+            output = f"❌ Ошибка: {e}"
+    return render_template("project.html", code=code, output=output)
+
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
+
