@@ -1,1 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Среда выполнения</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <div class="logo-title">
+            <img src="{{ url_for('static', filename='images/python-logo.png') }}" alt="Python Logo" class="logo">
+            <h1>Курсы</h1>
+        </div>
+        <h2>Среда выполнения</h2>
+    </header>
+
+    <section class="editor-container">
+        <form action="/check" method="POST">
+            <label for="code">Введите ваш код на Python:</label><br>
+            <textarea name="code" id="code" rows="10" cols="60" placeholder="print('Привет, мир!')"></textarea><br>
+            <button type="submit">Выполнить</button>
+        </form>
+
+        {% if output %}
+        <section class="output">
+            <h3>Результат:</h3>
+            <pre>{{ output }}</pre>
+        </section>
+        {% endif %}
+    </section>
+
+    <footer>
+        <div class="social">
+            <a href="/">← Вернуться на главную</a>
+        </div>
+    </footer>
+</body>
+</html>
 
