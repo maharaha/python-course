@@ -16,5 +16,18 @@ def lesson(lesson_id):
     lesson = lessons[lesson_id]
     return render_template("lesson.html", lesson=lesson, lesson_id=lesson_id)
 
+@app.route("/practice", methods=["GET", "POST"])
+def practice():
+    output = ""
+    if request.method == "POST":
+        code = request.form.get("code", "")
+        try:
+            exec_globals = {}
+            exec(code, exec_globals)
+            output = exec_globals.get("output", "✅ Код выполнен успешно.")
+        except Exception as e:
+            output = f"❌ Ошибка: {e}"
+    return render_template("practice.html", output=output)
+
 if __name__ == "__main__":
     app.run()
