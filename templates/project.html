@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Итоговый проект</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <div class="logo-title">
+            <img src="{{ url_for('static', filename='images/python-logo.png') }}" alt="Python Logo" class="logo">
+            <h1>Курсы</h1>
+        </div>
+        <h2>Итоговый проект</h2>
+    </header>
+
+    <section class="intro">
+        <p>🎯 Завершающий проект — это ваша собственная программа на Python. Придумайте простую полезную утилиту или игру. Например: калькулятор, чат-бот, мини-игра, обработка текста.</p>
+        <p><strong>Пример:</strong> калькулятор, определение чётности, генератор пароля, счётчик слов, рисование с turtle.</p>
+    </section>
+
+    <section class="practice-container">
+        <form action="/project" method="POST">
+            <label for="code">Введите ваш проект:</label><br>
+            <textarea name="code" id="code" class="code-input" placeholder="Напишите свой проект здесь...">{{ code|default('') }}</textarea><br>
+            <button class="run-button" type="submit">Запустить</button>
+        </form>
+
+        {% if output %}
+        <div class="output-box">
+            <h3>Результат:</h3>
+            <pre>{{ output }}</pre>
+        </div>
+        {% endif %}
+    </section>
+
+    <footer>
+        <div class="social">
+            <a href="/">← Вернуться на главную</a>
+        </div>
+    </footer>
+</body>
+</html>
