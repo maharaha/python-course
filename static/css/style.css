@@ -159,3 +159,16 @@ footer {
     padding: 15px;
     margin-top: 40px;
 }
+/* Красочный блок вступления для страницы structure.html */
+.highlight-intro {
+    background: linear-gradient(to right, #e3f2fd, #ffffff);
+    border-left: 5px solid #2196F3;
+    padding: 25px;
+    margin: 20px 40px;
+    border-radius: 8px;
+    font-size: 18px;
+    color: #0d47a1;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+    text-align: center;
+}
+
