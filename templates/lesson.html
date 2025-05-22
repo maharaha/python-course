@@ -3,10 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <title>{{ lesson.title }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-    <h1>{{ lesson.title }}</h1>
-    <p>{{ lesson.content }}</p>
-    <p><a href="/structure">← Назад к структуре курса</a></p>
+    <header>
+        <div class="logo-title">
+            <img src="{{ url_for('static', filename='images/python-logo.png') }}" alt="Python Logo" class="logo">
+            <h1>Курсы</h1>
+        </div>
+        <h2>{{ lesson.title }}</h2>
+    </header>
+
+    <section class="lesson-content">
+        <h3>📘 Теоретический материал</h3>
+        <p>{{ lesson.content }}</p>
+    </section>
+
+    <div style="text-align: center; margin: 30px;">
+        <a href="/structure" class="course-button">← Назад к структуре курса</a>
+    </div>
+
+    <footer>
+        <div class="social">
+            © 2025 Курсы Python
+        </div>
+    </footer>
 </body>
 </html>
