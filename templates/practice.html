@@ -11,23 +11,24 @@
             <img src="{{ url_for('static', filename='images/python-logo.png') }}" alt="Python Logo" class="logo">
             <h1>Курсы</h1>
         </div>
-        <h2>Среда выполнения</h2>
+        <h2>Учебный курс</h2>
+        <h3>Среда выполнения</h3>
     </header>
 
-    <div class="practice-container">
-        <h2>Введите ваш код на Python:</h2>
-        <form method="post">
+    <section class="practice-container">
+        <h2>💻 Введите ваш код на Python:</h2>
+        <form method="POST">
             <textarea name="code" class="code-input" placeholder="Например: print('Привет, мир!')">{{ code|default('') }}</textarea><br>
-            <button type="submit" class="run-button">Выполнить</button>
+            <button type="submit" class="run-button">▶ Выполнить</button>
         </form>
 
         {% if output %}
         <div class="output-box">
-            <strong>Результат:</strong>
+            <h3>📤 Результат:</h3>
             <pre>{{ output }}</pre>
         </div>
         {% endif %}
-    </div>
+    </section>
 
     <footer>
         <div class="social">
